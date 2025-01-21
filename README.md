@@ -8,7 +8,7 @@
 ## Setup
 
 ```shell
-    pnpx playwright install
+pnpx playwright install --with-deps chromium
 pnpm install
 ```
 
