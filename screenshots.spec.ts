@@ -34,11 +34,6 @@ for (const [name, posAngle] of Object.entries(mapsConfig)) {
 
     const fte = page.locator("#fteCanvas");
 
-    await test.step("download map", async () => {
-      await fte.press("Tab", { delay: 100 });
-      await fte.press("Enter", { delay: 100 });
-    });
-
     await test.step("set pos/angle", async () => {
       await expect(page.locator("#fteShotIsReady")).toBeAttached({
         timeout: sysConfig.mapTimeout,

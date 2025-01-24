@@ -26,10 +26,11 @@ export function useFteLoader({
   mapName: string;
 }) {
   const assets = {
-    ...getGeneralAssets(),
-    ...getMapAssets(mapName),
+    [`qw/maps/${mapName}.bsp.gz`]: getAssetUrl(`maps/${mapName}.bsp.gz`),
     "id1/config.cfg": "config.cfg",
     "qw/qwprogs.qvm": "20240909-210239_2b31159_qwprogs.qvm",
+    ...getGeneralAssets(),
+    ...getMapAssets(mapName),
   };
   useScript(scriptPath, { removeOnUnmount: true });
   const { value: engineIsReady, setTrue: setEngineIsReady } = useBoolean(false);

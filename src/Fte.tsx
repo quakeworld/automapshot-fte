@@ -20,14 +20,13 @@ export function FteMapViewer() {
 
   useEffect(() => {
     if (mapIsReady) {
-      fte_command("toggleconsole");
       fte_command("setpos", params.get("posangle") || "");
 
       // wait for new pos to render
       window.setTimeout(() => {
         fte_command("cl_maxfps", 1);
         setShotReady(true);
-      }, 500);
+      }, 250);
     }
   }, [mapIsReady]);
 
