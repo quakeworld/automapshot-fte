@@ -6,7 +6,7 @@ import {
 
 // https://playwright.dev/docs/test-configuration
 export default defineConfig({
-  fullyParallel: true,
+  fullyParallel: false,
   workers: 1,
   webServer: {
     command: "pnpm dev",

@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { useFteLoader } from "@/vendor/fte/hooks";
-import { useEffect, useState } from "react";
 
 declare global {
   interface Window {
@@ -10,30 +10,27 @@ declare global {
 }
 
 const params = new URLSearchParams(window.location.search);
+const posAngle = params.get("posAngle") || "";
+const mapName = params.get("map") || "";
 
 export function FteMapViewer() {
-  const { engineIsReady, mapIsReady } = useFteLoader({
+  const { isFteReady, isCameraReady } = useFteLoader({
     scriptPath: "/ftewebgl.js",
-    mapName: params.get("map") || "start",
+    mapName,
   });
-  const [shotReady, setShotReady] = useState(false);
 
   useEffect(() => {
-    if (mapIsReady) {
-      fte_command("setpos", params.get("posangle") || "");
-
-      // wait for new pos to render
-      window.setTimeout(() => {
-        fte_command("cl_maxfps", 1);
-        setShotReady(true);
-      }, 250);
+    if (isFteReady) {
+      fte_command(
+        "alias f_spawn",
+        `"setpos ${posAngle}; wait; wait; wait; echo camera.ready"`,
+      );
     }
-  }, [mapIsReady]);
+  }, [isFteReady]);
 
   return (
     <div>
-      {engineIsReady && <div id="fteEngineIsReady" />}
-      {shotReady && <div id="fteShotIsReady" />}
+      {isCameraReady && <div id="fteCameraIsReady" />}
       <canvas id="fteCanvas" />
     </div>
   );

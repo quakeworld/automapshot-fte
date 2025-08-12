@@ -1,7 +1,7 @@
-import { getGeneralAssets, getMapAssets } from "@/vendor/fte/assets";
-import { getAssetUrl } from "@/vendor/qwcloudfront/assets/assets";
 import { useEffect } from "react";
 import { useBoolean, useEventListener, useScript } from "usehooks-ts";
+import { getGeneralAssets, getMapAssets } from "@/vendor/fte/assets";
+import { getAssetUrl } from "@/vendor/qwcloudfront/assets/assets";
 import { enableLogToEvents } from "./log";
 
 declare global {
@@ -26,15 +26,15 @@ export function useFteLoader({
   mapName: string;
 }) {
   const assets = {
-    [`qw/maps/${mapName}.bsp.gz`]: getAssetUrl(`maps/${mapName}.bsp.gz`),
+    [`qw/maps/${mapName}.bsp`]: `/maps/${mapName}.bsp`,
     "id1/config.cfg": "config.cfg",
     "qw/qwprogs.qvm": "20240909-210239_2b31159_qwprogs.qvm",
     ...getGeneralAssets(),
     ...getMapAssets(mapName),
   };
   useScript(scriptPath, { removeOnUnmount: true });
-  const { value: engineIsReady, setTrue: setEngineIsReady } = useBoolean(false);
-  const { value: mapIsReady, setTrue: setMapIsReady } = useBoolean(false);
+  const { value: isFteReady, setTrue: setIsFteReady } = useBoolean(false);
+  const { value: isCameraReady, setTrue: setIsCameraReady } = useBoolean(false);
 
   useEffect(() => {
     if (didInit) {
@@ -53,12 +53,10 @@ export function useFteLoader({
   }, []);
 
   // @ts-ignore: custom event
-  useEventListener("fte.event.ready", setEngineIsReady);
+  useEventListener("fte.ready", setIsFteReady);
 
   // @ts-ignore: custom event
-  useEventListener("fte.trigger.f_newmap", () => {
-    window.setTimeout(setMapIsReady, 250);
-  });
+  useEventListener("camera.ready", setIsCameraReady);
 
-  return { engineIsReady, mapIsReady };
+  return { isFteReady, isCameraReady };
 }

@@ -1,6 +1,7 @@
 .idea/
 dist/
 node_modules/
+public/maps/*.bsp
 test-results/
 config.maps.ts
 config.ts

@@ -23,10 +23,10 @@ function inspectMessage(message: any) {
 
 function eventByMessage(message: string): Event | null {
   switch (message) {
-    case "WebGL renderer initialized":
-      return new Event("fte.event.ready");
-    case "fte.trigger.f_newmap":
-      return new Event("fte.trigger.f_newmap");
+    case "------- Quake Initialized -------":
+      return new Event("fte.ready");
+    case "camera.ready":
+      return new Event("camera.ready");
     default:
       return null;
   }

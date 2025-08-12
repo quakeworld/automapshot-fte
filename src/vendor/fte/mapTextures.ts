@@ -5,7 +5,7 @@ function stripSuffixes(mapName: string): string {
     return mapName;
   }
 
-  return mapName.replace(/(.+?)[_\-]?beta(\d+)?$/gim, "$1");
+  return mapName.replace(/(.+?)[_-]?beta(\d+)?$/gim, "$1");
 }
 
 export function getMapTextures(mapName: string): { [key: string]: string } {

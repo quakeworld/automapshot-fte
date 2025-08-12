@@ -22,10 +22,10 @@ pnpm install
 
 ```ts
 export default {
-    width: 1280,
-    height: 720,
-    jpegQuality: 90, // 1-100
-    skipExisting: true, // skip if screenshot already exist in /dist
+  width: 1280,
+  height: 720,
+  jpegQuality: 90, // 1-100
+  skipExisting: true, // skip if screenshot already exist in /dist
 };
 ```
 
@@ -35,9 +35,9 @@ Camera position (first triplet) and angle (second triplet).
 
 ```ts
 export default {
-    "2bfree": "1380 1067 468 25 194 0",
-    "dm3": "1835 -342 18 19 128 0",
-    "outpost": "0 0 480 90 91 -59",
+  "2bfree": "1380 1067 468 25 194 0",
+  dm3: "1835 -342 18 19 128 0",
+  outpost: "0 0 480 90 91 -59",
 };
 ```
 
@@ -63,17 +63,26 @@ pnpm exec playwright test --grep "dm2"
 
 ## Tips
 
-### Batch compression
+### Batch operations
 
-Playwrights compression is sub-optimal. Use mogrify from the imagemagik package for better compression.
+#### Compression
+
+Playwrights compression is sub-optimal. Use `mogrify` from the imagemagik package for better compression.
 
 ```sh
 mkdir -p dist/compressed
-mogrify -format jpg -quality 80 -path dist/compressed dist/*.jpg
+mogrify -format webp -quality 80 -path dist/compressed dist/*.jpg
+```
+
+#### Creating thumbnails
+
+```sh
+mkdir -p dist/compressed/thumbs
+mogrify -format webp -thumbnail 640x360 -path dist/compressed/thumbs dist/*.jpg
 ```
 
 ## Related projects
 
-* [QuakeWorld Mapshots](https://github.com/vikpe/qw-mapshots)
-* [FTEQW](https://github.com/fte-team/fteqw)
-* [Playwright](https://github.com/microsoft/playwright)
+- [QuakeWorld Mapshots](https://github.com/vikpe/qw-mapshots)
+- [FTEQW](https://github.com/fte-team/fteqw)
+- [Playwright](https://github.com/microsoft/playwright)
