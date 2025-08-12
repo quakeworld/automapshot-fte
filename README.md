@@ -83,6 +83,5 @@ mogrify -format webp -thumbnail 640x360 -path dist/compressed/thumbs dist/*.jpg
 
 ## Related projects
 
-- [QuakeWorld Mapshots](https://github.com/vikpe/qw-mapshots)
 - [FTEQW](https://github.com/fte-team/fteqw)
 - [Playwright](https://github.com/microsoft/playwright)
