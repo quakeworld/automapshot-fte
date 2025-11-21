@@ -12,9 +12,10 @@ pnpx playwright install --with-deps chromium
 pnpm install
 ```
 
-1. Rename `config.example.ts` to `config.ts`
-2. Rename `config.maps.example.ts` to `config.maps.ts`
-3. (optional) edit `config.ts`
+1. Put `.bsp` maps in `public/maps`
+2. Rename `config.example.ts` to `config.ts`
+3. Rename `config.maps.example.ts` to `config.maps.ts`
+4. (optional) edit `config.ts`
 
 ## Configuration
 
