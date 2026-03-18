@@ -12,19 +12,19 @@
     "format": "biome check --write src"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.6",
-    "@playwright/test": "^1.56.1",
-    "@types/node": "^24.10.1",
-    "@types/react": "^19.2.6",
+    "@biomejs/biome": "^2.4.8",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
+    "@vitejs/plugin-react": "^6.0.1",
     "typescript": "^5.9.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "usehooks-ts": "^3.1.1",
-    "vite": "^7.2.4"
+    "vite": "^8.0.0"
   }
 }
