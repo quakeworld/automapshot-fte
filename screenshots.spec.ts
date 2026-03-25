@@ -56,7 +56,9 @@ for (const [mapName, posAngle] of Object.entries(mapsConfig)) {
 }
 
 async function downloadMap(mapName: string, destPath: string): Promise<void> {
-  const response = await fetch(`https://a.quake.world/maps/${mapName}.bsp`);
+  const response = await fetch(
+    `https://assets.quake.world/maps/${mapName}.bsp`,
+  );
   if (!response.ok) {
     throw new Error(
       `Download failed: ${response.status} ${response.statusText}`,
